@@ -9,10 +9,10 @@ pipeline {
         credentials(credentialType: 'com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl', defaultValue: '', description: 'Jenkins wants to use the "OMCloud-Active-Directory" credentials. Select your credential to allow this.', name: 'OMCloud-Active-Directory', required: true)
 		string(name: 'TARGETHOSTS', description:'Please use BEI IP ONLY')
 		choice(name: 'COUNTRY', choices: ['senegal','sierra_leone','roumanie','mali','madagascar','maroc','liberia','guinee_bissau','guinee_conakry','cameroun','cote_ivoire','centrafrique','rdc','botswana', 'gint-gs'], description: "Enter the country name for td agent file")
-      stages {
-         stage("coutry job value") {
-	   steps {
-	     when {
+           stages {
+              stage("coutry job value") {
+	       steps {
+	         when {
 	             expression {choices == 'cameroun'}
 		     }
 		     steps {
