@@ -1,11 +1,6 @@
 pipeline {
-    options {
-        buildDiscarder(logRotator(numToKeepStr: '10'))
-        disableConcurrentBuilds()
-        timeout(time: 60, unit: 'MINUTES')
-    }
-
-
+    agent any
+    
     parameters {
         choice(name: 'Update_Job_Config', choices:"Yes\nNo", description: "Do you want to do a dry run to update job to latest version and grab parameters?" )
         
@@ -26,7 +21,6 @@ pipeline {
                 }
             }
         }
-
   }
 
 }
