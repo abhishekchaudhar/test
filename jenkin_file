@@ -15,9 +15,8 @@ pipeline {
 		choice(name: 'COUNTRY', choices: ['senegal','sierra_leone','roumanie','mali','madagascar','maroc','liberia','guinee_bissau','guinee_conakry','cameroun','cote_ivoire','centrafrique','rdc','botswana', 'gint-gs'], description: "Enter the country name for td agent file")
         if (env.COUNTRY == 'OCM')
 		    {
-			choice(name: 'Version' , choices: ['G4R4C5B1','G4R4C5B2','G4R4C5B3'], Description: "Select the name from drop-down"
-	    
-        
+			choice(name: 'Version' , choices: ['G4R4C5B1','G4R4C5B2','G4R4C5B3'], Description: "Select the name from drop-down" )
+			}
     }  
       stages {
           stage("Updating Job Config") {
