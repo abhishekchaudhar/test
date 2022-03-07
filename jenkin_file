@@ -1,13 +1,17 @@
 pipeline {
     agent any
-    
+    }
+
+
     parameters {
         choice(name: 'Update_Job_Config', choices:"Yes\nNo", description: "Do you want to do a dry run to update job to latest version and grab parameters?" )
         
         credentials(credentialType: 'com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl', defaultValue: '', description: 'Jenkins wants to use the "OMCloud-Active-Directory" credentials. Select your credential to allow this.', name: 'OMCloud-Active-Directory', required: true)
 		string(name: 'TARGETHOSTS', description:'Please use BEI IP ONLY')
 		choice(name: 'COUNTRY', choices: ['senegal','sierra_leone','roumanie','mali','madagascar','maroc','liberia','guinee_bissau','guinee_conakry','cameroun','cote_ivoire','centrafrique','rdc','botswana', 'gint-gs'], description: "Enter the country name for td agent file")
+       
         
+    }  
       stages {
           stage("Updating Job Config") {
             steps {
@@ -21,7 +25,5 @@ pipeline {
             }
         }
   }
-
- }
 
 }
