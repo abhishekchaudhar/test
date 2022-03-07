@@ -1,5 +1,4 @@
 pipeline {
-    agent { label 'ansible-latest' }
     options {
         buildDiscarder(logRotator(numToKeepStr: '10'))
         disableConcurrentBuilds()
@@ -27,18 +26,6 @@ pipeline {
                 }
             }
         }
- 
-    
-        
-        stage("Installing configuration on servers") {
-                
-			   steps { 
-
-                ansiblePlaybook credentialsId: 'Ansible-default-key', extras:  "-e  BEI_IPS=${env.TARGETHOSTS}  -e platform=${env.platform} -e location=${env.location} -e COUNTRY_td=${env.COUNTRY} -e TangoVersion=${env.TangoVersion} -e playname=${env.playname}", disableHostKeyChecking: "true", playbook: 'jen_files/main.yml'
-
-			}  
-	     		
-      }
 
   }
 
