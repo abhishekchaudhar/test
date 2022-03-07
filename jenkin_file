@@ -16,7 +16,7 @@ pipeline {
         if (env.COUNTRY == 'OCM')
 		    {
 			choice(name: 'Version' , choices: ['G4R4C5B1','G4R4C5B2','G4R4C5B3'], Description: "Select the name from drop-down"
-	    choice(name: 'playname', choices:['td-agent.yml'], description: 'which playbook you want to use')
+	    
         
     }  
       stages {
