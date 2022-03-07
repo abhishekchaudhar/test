@@ -16,8 +16,6 @@ pipeline {
         if (env.COUNTRY == 'OCM')
 		    {
 			choice(name: 'Version' , choices: ['G4R4C5B1','G4R4C5B2','G4R4C5B3'], Description: "Select the name from drop-down"
-		choice(name: 'TangoVersion' , choices: ['B2','B3_B4'], description: "Select the current tango version.Example for C5B2P6 select B2 and for C5B3 to C5B4 select B3_B4")
-        
 	    choice(name: 'playname', choices:['td-agent.yml'], description: 'which playbook you want to use')
         
     }  
