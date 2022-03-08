@@ -1,0 +1,57 @@
+pipeline {
+    agent any
+
+properties([
+    parameters([
+        [   $class: 'ChoiceParameter', 
+            choiceType: 'PT_SINGLE_SELECT', 
+            name: 'Env',
+            randomName: 'choice-parameter-562fgg435534'
+            description: 'Which environment you want to deploy?',
+            script: [
+                $class: 'GroovyScript',
+                fallbackScript: [
+                     classpath: [], 
+                     sandbox: false, 
+                     script: 'return ["error"]'
+                ],
+                script: [
+                    classpath: [], 
+                    sandbox: false,
+                    script: '''
+                        return ["x","y","z","p","d","e"]
+                    '''
+                ]
+            ]
+        ],
+        [   $class: 'CascadeChoiceParameter',
+            choiceType: 'PT_SINGLE_SELECT',
+            description: 'Select the Server from the Dropdown List',
+            filterLength: 1,
+            filterable: true,
+            name: 'location',
+            randomName: 'choice-parameter-qweqweqwesd324324',
+            referencedParameters: 'Env',
+            script: [
+                $class: 'GroovyScript',
+                fallbackScript: [
+                    classpath: [],
+                    sandbox: false,
+                    script: 'return ["error"]'
+                ],
+                script: [
+                    classpath: [],
+                    sandbox: false,
+                    script: '''
+                         if(Env.equals("x")){
+                             return ['a', 'b']
+                         } else {
+                             return ['e','h']
+                         }
+                    '''
+                ]
+            ]
+        ]
+    ])
+])
+}
