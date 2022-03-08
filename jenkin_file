@@ -1,25 +1,28 @@
 pipeline {
-    agent { label 'ansible-latest' }
-    options {
-        buildDiscarder(logRotator(numToKeepStr: '10'))
-        disableConcurrentBuilds()
-        timeout(time: 60, unit: 'MINUTES')
-    }
-
+    agent any
+   
 
     parameters {
         choice(name: 'Update_Job_Config', choices:"Yes\nNo", description: "Do you want to do a dry run to update job to latest version and grab parameters?" )
         
         credentials(credentialType: 'com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl', defaultValue: '', description: 'Jenkins wants to use the "OMCloud-Active-Directory" credentials. Select your credential to allow this.', name: 'OMCloud-Active-Directory', required: true)
 		string(name: 'TARGETHOSTS', description:'Please use BEI IP ONLY')
-		choice(name: 'COUNTRY', choices: ['senegal','sierra_leone','roumanie','mali','madagascar','maroc','liberia','guinee_bissau','guinee_conakry','cameroun','cote_ivoire','centrafrique','rdc','botswana', 'gint-gs'], description: "Enter the country name for td agent file")
-        if (env.COUNTRY == 'OCM')
-		    {
-			choice(name: 'Version' , choices: ['G4R4C5B1','G4R4C5B2','G4R4C5B3'], Description: "Select the name from drop-down"
-		choice(name: 'TangoVersion' , choices: ['B2','B3_B4'], description: "Select the current tango version.Example for C5B2P6 select B2 and for C5B3 to C5B4 select B3_B4")
-        
-	    choice(name: 'playname', choices:['td-agent.yml'], description: 'which playbook you want to use')
-        
+        activeChoiceParam('country') {
+            description('Select country you wan to deploy')
+            choiceType('SINGLE_SELECT')
+            groovyScript {
+                script('return["OCM", "OBW", "OGN"]')
+                fallbackScript('"fallback choice"')
+			}
+		}
+        activeChoiceReactiveParam('version') {
+                      description('select your version')
+                      choiceType('SINGLE_SELECT')
+                      groovyScript {
+                          script(' if(country.equals("OCM")) { return ["G4R4C5B1", "G4R4C5B2"] } else if(country.equals("OBW")) { return ["G4R4C5B3", "G4R4C5B4"] } ')
+                          fallbackScript('return ["error"]')
+                      }
+                      referencedParameter('country')
     }  
       stages {
           stage("Updating Job Config") {
@@ -33,20 +36,9 @@ pipeline {
                 }
             }
         }
- 
-    
-        
-        stage("Installing configuration on servers") {
-                
-			   steps { 
-
-                ansiblePlaybook credentialsId: 'Ansible-default-key', extras:  "-e  BEI_IPS=${env.TARGETHOSTS}  -e platform=${env.platform} -e location=${env.location} -e COUNTRY_td=${env.COUNTRY} -e TangoVersion=${env.TangoVersion} -e playname=${env.playname}", disableHostKeyChecking: "true", playbook: 'jen_files/main.yml'
-
-			}  
 	     		
       }
 
   }
 
 }
-
