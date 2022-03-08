@@ -11,7 +11,7 @@ pipeline {
             description('Select country you wan to deploy')
             choiceType('SINGLE_SELECT')
             groovyScript {
-                script('return ['OCM', 'OBW', 'OGN']')
+                script('return['OCM', 'OBW', 'OGN']')
                 fallbackScript('"fallback choice"')
 			}
 		}
