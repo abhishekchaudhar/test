@@ -1,7 +1,6 @@
 pipeline {
     agent any
-    
-
+   
 
     parameters {
         choice(name: 'Update_Job_Config', choices:"Yes\nNo", description: "Do you want to do a dry run to update job to latest version and grab parameters?" )
@@ -9,19 +8,22 @@ pipeline {
         credentials(credentialType: 'com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl', defaultValue: '', description: 'Jenkins wants to use the "OMCloud-Active-Directory" credentials. Select your credential to allow this.', name: 'OMCloud-Active-Directory', required: true)
 		string(name: 'TARGETHOSTS', description:'Please use BEI IP ONLY')
 		choice(name: 'COUNTRY', choices: ['senegal','sierra_leone','roumanie','mali','madagascar','maroc','liberia','guinee_bissau','guinee_conakry','cameroun','cote_ivoire','centrafrique','rdc','botswana', 'gint-gs'], description: "Enter the country name for td agent file")
-           stages {
-              stage("coutry job value") {
-	       steps {
-	         when {
-	             expression {choices == 'cameroun'}
-		     }
-		     steps {
-		         choice(name: 'Version' , choices: ['G4R4C5B1','G4R4C5B2','G4R4C5B3'], Description: "Select the name from drop-down")
-			 }
-		  }
-		 }
-	}
-        
+        activeChoiceParam('country') {
+            description('Select country you wan to deploy')
+            choiceType('SINGLE_SELECT')
+            groovyScript {
+                script('return ['OCM', 'OBW', 'OGN']')
+                fallbackScript('"fallback choice"')
+			}
+		}
+        activeChoiceReactiveParam('version') {
+                      description('select your version')
+                      choiceType('SINGLE_SELECT')
+                      groovyScript {
+                          script(' if(country.equals("OCM")) { return ["G4R4C5B1", "G4R4C5B2"] } else if(country.equals("OBW")) { return ["G4R4C5B3", "G4R4C5B4"] } ')
+                          fallbackScript('return ["error"]')
+                      }
+                      referencedParameter('country')
     }  
       stages {
           stage("Updating Job Config") {
@@ -35,5 +37,9 @@ pipeline {
                 }
             }
         }
-    }
+	     		
+      }
+
+  }
+
 }
