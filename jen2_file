@@ -1,0 +1,20 @@
+pipeline {
+    agent any
+
+activeChoiceParam('country') {
+            description('Select country you wan to deploy')
+            choiceType('SINGLE_SELECT')
+            groovyScript {
+                script('return ['OCM', 'OBW', 'OGN']')
+                
+			}
+		}
+        activeChoiceReactiveParam('version') {
+                      description('select your version')
+                      choiceType('SINGLE_SELECT')
+                      groovyScript {
+                          script(' if(country.equals("OCM")) { return ["G4R4C5B1", "G4R4C5B2"] } else if(country.equals("OBW")) { return ["G4R4C5B3", "G4R4C5B4"] } ')
+                        
+                      }
+                      referencedParameter('country')
+    }  
