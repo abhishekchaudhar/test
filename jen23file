@@ -4,7 +4,7 @@ pipeline {
             stage('Parameters'){
                 steps {
                     script {
-					properties([
+		       properties([
                         parameters([
                             [   $class: 'ChoiceParameter', 
                             choiceType: 'PT_SINGLE_SELECT', 
