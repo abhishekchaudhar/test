@@ -1,0 +1,89 @@
+pipeline {
+    agent any 
+        stages {
+            stage('setup parameter') {
+                steps {
+                    script { 
+                        properties([ 
+                            parameters([ 
+                                [$class: 'ChoiceParameter',
+                                    choiseType: 'PT_SINGLE_SELECT',
+                                    description: 'Select The Country from Dropdown List',
+                                    filterLength: 1,
+                                    filterable: false,
+                                    name: 'Country',
+                                    script: [ 
+                                        $class: 'GroovyScript',
+                                        fallbackScript: [ 
+                                            classpath: [],
+                                            sandbox: false,
+                                            script:
+                                                "return['Could not get the Country']
+                                        ],
+                                        script: [
+                                            classpath:[],
+                                            sandbox: false,
+                                            script: 
+                                                "return['OCM', 'OBW', 'OCF', 'OGN', 'OGW', 'OSL', 'OSN', 'OCI', 'OCD-USD', 'OCD-CDF', 'OLR-LID', 'OLR-USD', 'OML', 'ORO', 'OMG']
+                                         ]
+                                    ]
+                                  ],
+                                  [$class: 'CascadeCoiceParameter',
+                                      choiceType: 'PT_SINGLE_SELECT',
+                                      description: 'Select the Version from the Dropdown List',
+                                      name: 'Version',
+                                      referenceParameters: 'Country',
+                                      script:
+                                          [$class: 'GroovyScript',
+                                          fallbackScript: [
+                                              classpath: [],
+                                              sandbox: false,
+                                              script: "return[Could not get Version]"
+                                          ],
+                                          script: [
+                                              classpath: [],
+                                              sandbox: false,
+                                              script: '''
+                                                  if (Country.equals("OCM")) {
+                                                  return ["G4R4C5B3i2P6" , "G4R4C5B4i1P2"]
+                                                  } else if (Country.equals("OBW")) {
+                                                  return  ["G4R4C5B1i2P7" , "G4R4C5B4i1P2"]
+                                                  } else if (Country.equals("OCF")) {
+                                                  return  ["G4R4C5B1i2P3"]
+                                                  } else if (Country.equals("OGN")) {
+                                                  return  ["G4R4C5B2P6HF1"]
+                                                  } else if (Country.equals("OGW")) {
+                                                  return  ["G4R4C5B4i1P2"]
+                                                  } else if (Country.equals("OSL")) {
+                                                  return  ["G4R4C5B4i1P2"]
+                                                  } else if (Country.equals("OSN")) {
+						  return  ["G4R4C5B3i2P6"]
+						  } else if (Country.equals("OCI")) {
+						  return  ["G4R4C5B2i2P3"]
+						  } else if (Country.equals("OCD-USD")) {
+						  return  ["G4R4C5B2i2P3"]
+						  } else if (Country.equals("OCD-CDF")) {
+						  return  ["G4R4C5B2i2P3"]
+						  } else if (Country.equals("OLR-LID")) {
+						  return  ["G4R4C5B3i2P6" , "G4R4C5B4i1P2"]
+						  } else if (Country.equals("OLR-USD")) {
+						  return  ["G4R4C5B3i2P6" , "G4R4C5B4i1P2"]
+						  } else if (Country.equals("OML")) {
+						  return  ["G4R4C5B2i6" , "G4R4C5B4P2"]
+						  } else if (Country.equals("ORO")) {
+						  return  ["G4R4C5B2i2P3"]
+						  } else if (Country.equals("OMG")) {
+						  return  ["G4R4C5B4i1P2"]
+						  }
+                                                  '''
+                                      ]
+                              ]
+                     ] 
+      ])
+     ])
+    }
+   }
+  }
+ }
+}
+
