@@ -43,37 +43,38 @@ pipeline {
                                           script: [
                                               classpath: [],
                                               sandbox: false,
-                                              script: "if (Country == "OCM") {"
-"return ["G4R4C5B3i2P6" , "G4R4C5B4i1P2"]"
-"} else if ( Country == "OBW") {" 
-"return  ["G4R4C5B1i2P7" , "G4R4C5B4i1P2"]"
-"} else if ( Country == "OCF") {"
-"return  ["G4R4C5B1i2P3"]"
-"} else if ( Country == "OGN") {"
-"return  ["G4R4C5B2P6HF1"]"
-"} else if ( Country == "OGW") {"
-"return  ["G4R4C5B4i1P2"]"
-"} else if ( Country == "OSL") {"
-"return  ["G4R4C5B4i1P2"]"
-"} else if ( Country == "OSN") {"
-"return  ["G4R4C5B3i2P6"]"
-"} else if ( Country == "OCI") {"
-"return  ["G4R4C5B2i2P3"]"
-"} else if ( Country == "OCD-USD") {"
-"return  ["G4R4C5B2i2P3"]"
-"} else if ( Country == "OCD-CDF") {"
-"return  ["G4R4C5B2i2P3"]"
-"} else if ( Country == "OLR-LID") {"
-"return  ["G4R4C5B3i2P6" , "G4R4C5B4i1P2"]"
-"} else if ( Country == "OLR-USD") {"
-"return  ["G4R4C5B3i2P6" , "G4R4C5B4i1P2"]"
-"} else if ( Country == "OML") {"
-"return  ["G4R4C5B2i6" , "G4R4C5B4P2"]"
-"} else if ( Country == "ORO") {"
-"return  ["G4R4C5B2i2P3"]"
-"} else if ( Country == "OMG") {"
-"return  ["G4R4C5B4i1P2"]"
-"}"
+                                              script: ''' if (Country == "OCM") {
+return ["G4R4C5B3i2P6" , "G4R4C5B4i1P2"]
+} else if ( Country == "OBW") {
+return  ["G4R4C5B1i2P7" , "G4R4C5B4i1P2"]
+} else if ( Country == "OCF") {
+return  ["G4R4C5B1i2P3"]"
+} else if ( Country == "OGN") {
+return  ["G4R4C5B2P6HF1"]"
+} else if ( Country == "OGW") {
+return  ["G4R4C5B4i1P2"]"
+} else if ( Country == "OSL") {
+return  ["G4R4C5B4i1P2"]"
+} else if ( Country == "OSN") {
+return  ["G4R4C5B3i2P6"]"
+} else if ( Country == "OCI") {
+return  ["G4R4C5B2i2P3"]"
+} else if ( Country == "OCD-USD") {
+return  ["G4R4C5B2i2P3"]"
+} else if ( Country == "OCD-CDF") {
+return  ["G4R4C5B2i2P3"]"
+} else if ( Country == "OLR-LID") {
+return  ["G4R4C5B3i2P6" , "G4R4C5B4i1P2"]
+} else if ( Country == "OLR-USD") {
+return  ["G4R4C5B3i2P6" , "G4R4C5B4i1P2"]
+} else if ( Country == "OML") {
+return  ["G4R4C5B2i6" , "G4R4C5B4P2"]
+} else if ( Country == "ORO") {
+return  ["G4R4C5B2i2P3"]
+} else if ( Country == "OMG") {
+return  ["G4R4C5B4i1P2"]
+}
+'''
                                       ]
                               ]
                      ] 
