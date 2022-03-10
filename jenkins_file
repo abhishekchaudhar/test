@@ -44,18 +44,18 @@ pipeline {
                                               classpath: [],
                                               sandbox: false,
                                               script: ''' if (Country == "OCM") {
-					      return ["G4R4C5B3i2P6" , "G4R4C5B4i1P2"]
-					      } else if ( Country == "OBW") { 
-					      return  ["G4R4C5B1i2P7" , "G4R4C5B4i1P2"] 
-					      } else if ( Country == "OCF") {
-                                              return  ["G4R4C5B1i2P3"]
-                                              } else if ( Country == "OGN") {
-                                              return  ["G4R4C5B2P6HF1"]
-                                              } else if ( Country == "OGW") {
-                                              return  ["G4R4C5B4i1P2"]
-                                              } else if ( Country == "OSL") {
-                                              return  ["G4R4C5B4i1P2"]
-                                              } else if ( Country == "OSN") {
+return ["G4R4C5B3i2P6" , "G4R4C5B4i1P2"]
+} else if ( Country == "OBW") { 
+return  ["G4R4C5B1i2P7" , "G4R4C5B4i1P2"] 
+} else if ( Country == "OCF") {
+return  ["G4R4C5B1i2P3"]
+} else if ( Country == "OGN") {
+return  ["G4R4C5B2P6HF1"]
+} else if ( Country == "OGW") {
+return  ["G4R4C5B4i1P2"]
+} else if ( Country == "OSL") {
+return  ["G4R4C5B4i1P2"]
+} else if ( Country == "OSN") {
 					      return  ["G4R4C5B3i2P6"]
 					      } else if ( Country == "OCI") {
 					      return  ["G4R4C5B2i2P3"]
