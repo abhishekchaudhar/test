@@ -28,7 +28,7 @@ pipeline {
                                          ]
                                     ]
                                   ],
-                                  [$class: 'CascadeCoiceParameter',
+                                  [$class: 'CascadeChoiceParameter',
                                       choiceType: 'PT_SINGLE_SELECT',
                                       description: 'Select the Version from the Dropdown List',
                                       name: 'Version',
