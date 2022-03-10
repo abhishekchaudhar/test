@@ -7,7 +7,7 @@ pipeline {
                         properties([ 
                             parameters([ 
                                 [$class: 'ChoiceParameter',
-                                    choiseType: 'PT_SINGLE_SELECT',
+                                    choiceType: 'PT_SINGLE_SELECT',
                                     description: 'Select The Country from Dropdown List',
                                     filterLength: 1,
                                     filterable: false,
