@@ -24,7 +24,7 @@ pipeline {
                                             classpath:[],
                                             sandbox: false,
                                             script: 
-                                                "return['OCM', 'OBW', 'OCF', 'OGN', 'OGW', 'OSL', 'OSN', 'OCI', 'OCD-USD', 'OCD-CDF', 'OLR-LID', 'OLR-USD', 'OML', 'ORO', 'OMG']"
+                                                "return ['OCM', 'OBW', 'OCF', 'OGN', 'OGW', 'OSL', 'OSN', 'OCI', 'OCD-USD', 'OCD-CDF', 'OLR-LID', 'OLR-USD', 'OML', 'ORO', 'OMG'] "
                                          ]
                                     ]
                                   ],
@@ -44,35 +44,35 @@ pipeline {
                                               classpath: [],
                                               sandbox: false,
                                               script: '''
-                                                  if (Country.equals("OCM")) {
+                                                  if (Country == "OCM") {
                                                   return ["G4R4C5B3i2P6" , "G4R4C5B4i1P2"]
-                                                  } else if (Country.equals("OBW")) {
+                                                  } else if (Country == "OBW") {
                                                   return  ["G4R4C5B1i2P7" , "G4R4C5B4i1P2"]
-                                                  } else if (Country.equals("OCF")) {
+                                                  } else if (Country == "OCF") {
                                                   return  ["G4R4C5B1i2P3"]
-                                                  } else if (Country.equals("OGN")) {
+                                                  } else if (Country == "OGN") {
                                                   return  ["G4R4C5B2P6HF1"]
-                                                  } else if (Country.equals("OGW")) {
+                                                  } else if (Country == "OGW") {
                                                   return  ["G4R4C5B4i1P2"]
-                                                  } else if (Country.equals("OSL")) {
+                                                  } else if (Country == "OSL") {
                                                   return  ["G4R4C5B4i1P2"]
-                                                  } else if (Country.equals("OSN")) {
+                                                  } else if (Country == "OSN") {
 						  return  ["G4R4C5B3i2P6"]
-						  } else if (Country.equals("OCI")) {
+						  } else if (Country == "OCI") {
 						  return  ["G4R4C5B2i2P3"]
-						  } else if (Country.equals("OCD-USD")) {
+						  } else if (Country == "OCD-USD") {
 						  return  ["G4R4C5B2i2P3"]
-						  } else if (Country.equals("OCD-CDF")) {
+						  } else if (Country == "OCD-CDF") {
 						  return  ["G4R4C5B2i2P3"]
-						  } else if (Country.equals("OLR-LID")) {
+						  } else if (Country == "OLR-LID") {
 						  return  ["G4R4C5B3i2P6" , "G4R4C5B4i1P2"]
-						  } else if (Country.equals("OLR-USD")) {
+						  } else if (Country == "OLR-USD") {
 						  return  ["G4R4C5B3i2P6" , "G4R4C5B4i1P2"]
-						  } else if (Country.equals("OML")) {
+						  } else if (Country == "OML") {
 						  return  ["G4R4C5B2i6" , "G4R4C5B4P2"]
-						  } else if (Country.equals("ORO")) {
+						  } else if (Country == "ORO") {
 						  return  ["G4R4C5B2i2P3"]
-						  } else if (Country.equals("OMG")) {
+						  } else if (Country == "OMG") {
 						  return  ["G4R4C5B4i1P2"]
 						  }
                                                   '''
