@@ -18,7 +18,7 @@ pipeline {
                                             classpath: [],
                                             sandbox: false,
                                             script:
-                                                "return['Could not get the Country']
+                                                "return['Could not get the Country']"
                                         ],
                                         script: [
                                             classpath:[],
