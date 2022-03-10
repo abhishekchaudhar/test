@@ -56,25 +56,25 @@ return  ["G4R4C5B4i1P2"]
 } else if ( Country == "OSL") {
 return  ["G4R4C5B4i1P2"]
 } else if ( Country == "OSN") {
-					      return  ["G4R4C5B3i2P6"]
-					      } else if ( Country == "OCI") {
-					      return  ["G4R4C5B2i2P3"]
-					      } else if ( Country == "OCD-USD") {
-					      return  ["G4R4C5B2i2P3"]
-					      } else if ( Country == "OCD-CDF") {
-					      return  ["G4R4C5B2i2P3"]
-						  } else if ( Country == "OLR-LID") {
-						  return  ["G4R4C5B3i2P6" , "G4R4C5B4i1P2"]
-						  } else if ( Country == "OLR-USD") {
-						  return  ["G4R4C5B3i2P6" , "G4R4C5B4i1P2"]
-						  } else if ( Country == "OML") {
-						  return  ["G4R4C5B2i6" , "G4R4C5B4P2"]
-						  } else if ( Country == "ORO") {
-						  return  ["G4R4C5B2i2P3"]
-						  } else if ( Country == "OMG") {
-						  return  ["G4R4C5B4i1P2"]
-						  } 
-                                                  '''
+return  ["G4R4C5B3i2P6"]
+} else if ( Country == "OCI") {
+return  ["G4R4C5B2i2P3"]
+} else if ( Country == "OCD-USD") {
+return  ["G4R4C5B2i2P3"]
+} else if ( Country == "OCD-CDF") {
+return  ["G4R4C5B2i2P3"]
+} else if ( Country == "OLR-LID") {
+return  ["G4R4C5B3i2P6" , "G4R4C5B4i1P2"]
+} else if ( Country == "OLR-USD") {
+return  ["G4R4C5B3i2P6" , "G4R4C5B4i1P2"]
+} else if ( Country == "OML") {
+return  ["G4R4C5B2i6" , "G4R4C5B4P2"]
+} else if ( Country == "ORO") {
+return  ["G4R4C5B2i2P3"]
+} else if ( Country == "OMG") {
+return  ["G4R4C5B4i1P2"]
+} 
+'''
                                       ]
                               ]
                      ] 
