@@ -38,7 +38,7 @@ pipeline {
                                           fallbackScript: [
                                               classpath: [],
                                               sandbox: false,
-                                              script: "return[Could not get Version]"
+                                              script: "return['Could not get Version']"
                                           ],
                                           script: [
                                               classpath: [],
