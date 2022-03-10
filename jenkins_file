@@ -43,7 +43,7 @@ pipeline {
                                           script: [
                                               classpath: [],
                                               sandbox: false,
-                                              script: ''' if (Country == "OCM") {
+                                              script: '''if (Country == "OCM") {
 return ["G4R4C5B3i2P6" , "G4R4C5B4i1P2"]
 } else if ( Country == "OBW") {
 return  ["G4R4C5B1i2P7" , "G4R4C5B4i1P2"]
