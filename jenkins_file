@@ -32,7 +32,7 @@ pipeline {
                                       choiceType: 'PT_SINGLE_SELECT',
                                       description: 'Select the Version from the Dropdown List',
                                       name: 'Version',
-                                      referenceParameters: 'Country',
+                                      referencedParameters: 'Country',
                                       script:
                                           [$class: 'GroovyScript',
                                           fallbackScript: [
