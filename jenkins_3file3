@@ -1,0 +1,101 @@
+pipeline {
+    
+
+      properties([ 
+                            parameters([ 
+                                choice(name: 'Update_Job_Config', choices:"Yes\nNo", description: "Do you want to do a dry run to update job to latest version and grab parameters?"),
+                                credentials(credentialType: 'com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl', defaultValue: '', description: 'Jenkins wants to use the "OMCloud-Active-Directory" credentials. Select your credential to allow this.', name: 'OMCloud-Active-Directory', required: true),
+		                        string(name: 'TARGETHOSTS', description:'Please use BEI IP ONLY'),
+	                            choice(name: 'playname', choices:['diff_check_all.yml','diff_check_all_web.yml','diif_check_all_txn.yml','project.prop.yml','hibernate.cfg.yml','mobiquityStart.conf_TXN.yml','Constant.properties.yml','applicationContext-hibernate.yml','configuration_Default.properties.yml','mobiquityStart.conf_WEB.yml'], description: 'which playbook you want to use'),
+                                [$class: 'ChoiceParameter',
+                                    choiceType: 'PT_SINGLE_SELECT',
+                                    description: 'Select The Country from Dropdown List',
+                                    filterLength: 1,
+                                    filterable: false,
+                                    name: 'Country',
+                                    script: [ 
+                                        $class: 'GroovyScript',
+                                        fallbackScript: [ 
+                                            classpath: [],
+                                            sandbox: false,
+                                            script:
+                                                "return['Could not get the Country']"
+                                        ],
+                                        script: [
+                                            classpath:[],
+                                            sandbox: false,
+                                            script: 
+                                                "return ['OCM', 'OBW', 'OCF', 'OGN', 'OGW', 'OSL', 'OSN', 'OCI', 'OCD-USD', 'OCD-CDF', 'OLR-LID', 'OLR-USD', 'OML', 'ORO', 'OMG'] "
+                                         ]
+                                    ]
+                                  ],
+                                  [$class: 'CascadeChoiceParameter',
+                                      choiceType: 'PT_SINGLE_SELECT',
+                                      description: 'Select the Version from the Dropdown List',
+                                      name: 'Version',
+                                      referencedParameters: 'Country',
+                                      script:
+                                          [$class: 'GroovyScript',
+                                          fallbackScript: [
+                                              classpath: [],
+                                              sandbox: false,
+                                              script: "return['Could not get Version']"
+                                          ],
+                                          script: [
+                                              classpath: [],
+                                              sandbox: false,
+                                              script: '''if (Country == "OCM") {
+return ["G4R4C5B3i2P6" , "G4R4C5B4i1P2"]
+} else if ( Country == "OBW") {
+return  ["G4R4C5B1i2P7" , "G4R4C5B4i1P2"]
+} else if ( Country == "OCF") {
+return  ["G4R4C5B1i2P3"]
+} else if ( Country == "OGN") {
+return  ["G4R4C5B2P6HF1"]
+} else if ( Country == "OGW") {
+return  ["G4R4C5B4i1P2"]
+} else if ( Country == "OSL") {
+return  ["G4R4C5B4i1P2"]
+} else if ( Country == "OSN") {
+return  ["G4R4C5B3i2P6"]
+} else if ( Country == "OCI") {
+return  ["G4R4C5B2i2P3"]
+} else if ( Country == "OCD-USD") {
+return  ["G4R4C5B2i2P3"]
+} else if ( Country == "OCD-CDF") {
+return  ["G4R4C5B2i2P3"]
+} else if ( Country == "OLR-LID") {
+return  ["G4R4C5B3i2P6" , "G4R4C5B4i1P2"]
+} else if ( Country == "OLR-USD") {
+return  ["G4R4C5B3i2P6" , "G4R4C5B4i1P2"]
+} else if ( Country == "OML") {
+return  ["G4R4C5B2i6" , "G4R4C5B4P2"]
+} else if ( Country == "ORO") {
+return  ["G4R4C5B2i2P3"]
+} else if ( Country == "OMG") {
+return  ["G4R4C5B4i1P2"]
+}
+'''
+                                      ]
+                              ]
+                     ] 
+      ])
+     ])
+    
+      stages {
+          stage("Updating Job Config") {
+            steps {
+                script {
+                            
+                    if ("${params.Update_Job_Config}" == "Yes") {
+                        currentBuild.result = 'ABORTED'
+                        error('DRY RUN COMPLETED. JOB UPDATED TO LATEST VERSION AND PARAMETERIZED.')
+                    }
+                }
+            }
+        }
+
+  }
+
+}
+
