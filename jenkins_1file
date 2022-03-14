@@ -11,5 +11,17 @@ pipeline {
 	    choice(name: 'playname', choices:['diff_check_all.yml','diff_check_all_web.yml','diif_check_all_txn.yml','project.prop.yml','hibernate.cfg.yml','mobiquityStart.conf_TXN.yml','Constant.properties.yml','applicationContext-hibernate.yml','configuration_Default.properties.yml','mobiquityStart.conf_WEB.yml'], description: 'which playbook you want to use')
         
     }  
+        stages {
+          stage("Updating Job Config") {
+            steps {
+                script {
+                            
+                    if ("${params.Update_Job_Config}" == "Yes") {
+                        currentBuild.result = 'ABORTED'
+                        error('DRY RUN COMPLETED. JOB UPDATED TO LATEST VERSION AND PARAMETERIZED.')
+                    }
+                }
+            }
+        }
+    }
 }
-
