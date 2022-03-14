@@ -6,11 +6,10 @@ pipeline {
                     script { 
                         properties([ 
                             parameters([ 
-                                choice(name: 'Update_Job_Config', choices:"Yes\nNo", description: "Do you want to do a dry run to update job to latest version and grab parameters?" )
-        
-                                credentials(credentialType: 'com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl', defaultValue: '', description: 'Jenkins wants to use the "OMCloud-Active-Directory" credentials. Select your credential to allow this.', name: 'OMCloud-Active-Directory', required: true)
-		                string(name: 'TARGETHOSTS', description:'Please use BEI IP ONLY')
-	                        choice(name: 'playname', choices:['diff_check_all.yml','diff_check_all_web.yml','diif_check_all_txn.yml','project.prop.yml','hibernate.cfg.yml','mobiquityStart.conf_TXN.yml','Constant.properties.yml','applicationContext-hibernate.yml','configuration_Default.properties.yml','mobiquityStart.conf_WEB.yml'], description: 'which playbook you want to use')
+                                choice(name: 'Update_Job_Config', choices:"Yes\nNo", description: "Do you want to do a dry run to update job to latest version and grab parameters?"),
+                                credentials(credentialType: 'com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl', defaultValue: '', description: 'Jenkins wants to use the "OMCloud-Active-Directory" credentials. Select your credential to allow this.', name: 'OMCloud-Active-Directory', required: true),
+		                string(name: 'TARGETHOSTS', description:'Please use BEI IP ONLY'),
+	                        choice(name: 'playname', choices:['diff_check_all.yml','diff_check_all_web.yml','diif_check_all_txn.yml','project.prop.yml','hibernate.cfg.yml','mobiquityStart.conf_TXN.yml','Constant.properties.yml','applicationContext-hibernate.yml','configuration_Default.properties.yml','mobiquityStart.conf_WEB.yml'], description: 'which playbook you want to use'),
                                 [$class: 'ChoiceParameter',
                                     choiceType: 'PT_SINGLE_SELECT',
                                     description: 'Select The Country from Dropdown List',
