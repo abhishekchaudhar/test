@@ -1,7 +1,6 @@
 pipeline {
      agent any
-    
-      properties([ 
+     
                             parameters([ 
                                 choice(name: 'Update_Job_Config', choices:"Yes\nNo", description: "Do you want to do a dry run to update job to latest version and grab parameters?"),
                                 credentials(credentialType: 'com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl', defaultValue: '', description: 'Jenkins wants to use the "OMCloud-Active-Directory" credentials. Select your credential to allow this.', name: 'OMCloud-Active-Directory', required: true),
@@ -80,8 +79,7 @@ return  ["G4R4C5B4i1P2"]
                               ]
                      ] 
       ])
-     ]),
-    
+   
       stages {
           stage("Updating Job Config") {
             steps {
