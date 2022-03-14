@@ -75,9 +75,6 @@ return  ["G4R4C5B2i2P3"]
 return  ["G4R4C5B4i1P2"]
 }
 '''
-choice(name: 'Update_Job_Config', choices:"Yes\nNo", description: "Do you want to do a dry run to update job to latest version and grab parameters?" )
-choice(name: 'playname', choices:['diff_check_all.yml','diff_check_all_web.yml','diif_check_all_txn.yml','project.prop.yml','hibernate.cfg.yml','mobiquityStart.conf_TXN.yml','Constant.properties.yml','applicationContext-hibernate.yml','configuration_Default.properties.yml','mobiquityStart.conf_WEB.yml'], description: 'which playbook you want to use')
-
                                       ]
                               ]
                      ] 
