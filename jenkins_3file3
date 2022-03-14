@@ -80,7 +80,7 @@ return  ["G4R4C5B4i1P2"]
                               ]
                      ] 
       ])
-     ])
+     ]),
     
       stages {
           stage("Updating Job Config") {
