@@ -12,6 +12,7 @@ pipeline {
         stage('Test') {
           steps {
             echo 'testing some code'
+            echo '"Get the driver path ${driverpath}"'
           }
         }
 
@@ -24,5 +25,8 @@ pipeline {
       }
     }
 
+  }
+  environment {
+    driverpath = 'cd /home/vagrant/Tomcat'
   }
 }
