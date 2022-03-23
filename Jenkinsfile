@@ -17,8 +17,8 @@ pipeline {
         }
 
         stage('Test log') {
-          environment{
-             localHost = "Reverse proxy"
+          environment {
+            localHost = 'Reverse proxy'
           }
           steps {
             writeFile(file: 'logfiletest.txt', text: "This location of driver is ${driverpath} and the name of server is ${localHost}")
