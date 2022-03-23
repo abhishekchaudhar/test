@@ -12,7 +12,7 @@ pipeline {
         stage('Test') {
           steps {
             echo 'testing some code'
-            echo '"Get the driver path ${driverpath}"'
+            echo "Get the driver path ${driverpath}"
           }
         }
 
