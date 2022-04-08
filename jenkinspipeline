@@ -1,0 +1,16 @@
+pipeline{
+   agent{
+      label 'Slave'
+   }
+   
+   stages {
+      stage('Hello') {
+         steps {
+                sh 'java -version'
+                echo "Get working Directory"
+                sh 'pwd'
+               }
+             }
+          }
+       }
+               
