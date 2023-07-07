@@ -16,7 +16,7 @@ pipeline {
 		string(name: 'version', description: 'which version want to update')
 		choice(name: 'location', choices:"next\ncurrent", description: "which location out of next and Current(Field is Mandatory if You want to Run the Configurations into NEXT or CURRENT)" )
 	    choice(name: 'playname', choices:['All_Config.yml','t_c3p0Prop.yml','t_hibernet.yml','t_mobstartConf.yml','t_projectProp.yml','w_applihibernet.yml','w_configdefault.yml','w_constantProp.yml','w_mobstartConf.yml'], description: 'which playbook you want to use')
-            choice(name: 'Tomcat_version', choices:"tomcat7\ntomcat8", description: "Please choice the tomcat version"
+            choice(name: 'Tomcat_version', choices:"tomcat7\ntomcat8", description: "Please choice the tomcat version" )
     }  
       stages {
           stage("Updating Job Config") {
